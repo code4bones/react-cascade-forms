@@ -1,0 +1,5 @@
+.npmrc
+node_modules/
+# build/
+storybook-static/
+yarn.lock

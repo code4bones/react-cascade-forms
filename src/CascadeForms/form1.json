@@ -1,0 +1,102 @@
+[
+	{
+		"type":"view",
+		"className":"formView",
+		"title":"The Form 2",
+		"id":"form2",
+		"items":[
+			{
+				"id":"not",
+				"type":"text",
+				"title":"The Title",
+				"visible":{ "state":"female","expect":true }
+			}
+		]
+	},
+	{
+		"type":"view",
+		"className":"formView",
+		"title":"The Form",
+		"id":"form1",
+		"items":[
+			{
+				"id":"name",
+				"title":"Name",
+				"type":"input",
+				"validator":{ "type":"string","max":5 },
+				"visible":{ "state":"male","expect":true }
+			},
+			{
+				"title":"Select people",
+				"type":"checkbox",
+				"id":"color",
+				"items":[
+					{
+						"visible":{ "state":"color","expect":true },
+						"title":"White people",
+						"type":"input",
+						"id":"white",
+						"items":[
+							{
+								"title":"Gender",
+								"type":"checkbox",
+								"id":"gender",
+								"items":[
+									{
+										"title":"Select one",
+										"type":"radio",
+										"id":"male",
+										"visible":{ "state":"gender","expect":true }
+									},
+									{
+										"title":"Select Two",
+										"type":"radio",
+										"id":"female",
+										"visible":{ "state":"gender","expect":true }
+									}
+								]
+							}
+						]
+					},
+					{
+						"type":"view",
+						"id":"pform",
+						"visible":{ "state":"color","expect":false },
+						"className":"peopleForm",
+						"items":[
+							{
+								"title":"Black people name include",
+								"type":"input",
+								"id":"black"
+							},
+							{
+								"title":"Black people exclude",
+								"type":"input",
+								"id":"info"
+							}
+						]
+					}
+				]
+			},
+			{
+				"title":"Agreenment",
+				"type":"checkbox",
+				"id":"agree",
+				"items":[
+					{
+						"title":"I'll accept all",
+						"type":"text",
+						"id":"accept",
+						"visible":{ "state":"agree","expect":true }						
+					},
+					{
+						"title":"Will u sell ur liver ?",
+						"type":"text",
+						"id":"deny",
+						"visible":{ "state":"agree","expect":false }
+					}
+				]
+			}			
+		]		
+	}
+]

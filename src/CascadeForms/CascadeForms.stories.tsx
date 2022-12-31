@@ -43,6 +43,7 @@ const CascadeFormsTest = (props:CascadeFormProps) => {
 
 	const onReadState = () => {
 		const state = st.current?.getState();
+		alert(JSON.stringify(state,null,2));
 		console.log("STATE",state);
 	};
 

@@ -1,6 +1,6 @@
 import React,{ useEffect,useImperativeHandle,useState } from "react";
 import Validator,{ ValidationError } from "fastest-validator";
-import { FormActions,FormItem,FormState,EntryProps,OnChangeFn, RenderProps,CascadeFormProps } from "./CascadeForms.types";
+import { FormActions,FormItem,FormState,EntryProps, RenderProps,CascadeFormProps } from "./CascadeForms.types";
 
 export * from "./CascadeForms.types";
 
@@ -26,9 +26,7 @@ const Entry : React.FC<EntryProps> = ({ item,formState,onUpdate,onRender }) => {
 			const res = check({ [item.id]:value }) as ValidationError[];
 			if ( res.length )
 				err = res.map((e) => e.message).join(",");
-			console.log("VALIDATIOM",res);
 		}
-		console.log({ [id]:value,state });
 		setState({ ...formState,
 			[id]:{
 				value,
@@ -71,7 +69,6 @@ const CascadeForms = React.forwardRef<FormActions,CascadeFormProps>(({ form,form
 	const getState = () => {
 		let res = {};
 		const iterate = (item:FormItem) => {		
-			console.log("Processing",item?.id);
 			if ( isVisible(item,formState) ) {
 				res = {
 					...res,
@@ -85,7 +82,6 @@ const CascadeForms = React.forwardRef<FormActions,CascadeFormProps>(({ form,form
 				iterate(item);
 			});            
 		};
-		console.log("Gettting state",formState);
 		form.forEach(iterate);
 		return Object.entries(res).reduce((agg,[key,val])=>{
 			if ( !val )
@@ -107,16 +103,5 @@ const CascadeForms = React.forwardRef<FormActions,CascadeFormProps>(({ form,form
 });
 
 CascadeForms.displayName = "CascadeForms";
-/*
-function DynaForm<T>(props:CascadeFormProps) {
-	const { form,formState,onRender, onUpdate } = props;    
-	const view = React.useMemo(()=>{
-		if ( !form?.length )
-			return <div>empty</div>;
-		return <Render formState={formState} items={form} onUpdate={onUpdate} onRender={onRender} />;
-	},[form,formState]);
-	return <div>{view}</div>;
-}
-*/
 
 export default CascadeForms;

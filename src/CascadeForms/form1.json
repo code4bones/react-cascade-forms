@@ -24,7 +24,7 @@
 				"id":"name",
 				"title":"Name",
 				"type":"input",
-				"validator":{ "type":"string","max":5 }
+				"validator":{ "type":"string","min":2,"max":5 }
 			},
 			{
 				"title":"More details",

@@ -12,9 +12,12 @@ type FormValue = {
 
 export type FormState = Record<string | number,FormValue>;
 
+export type FormPayload = any;
+
 export type FormItem = {
     id:string;
     type:string;
+    payload?:FormPayload;
     validator?:ValidationRuleObject;
     className?:string;
     title?:string;

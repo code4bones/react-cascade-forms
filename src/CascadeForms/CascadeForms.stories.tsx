@@ -5,7 +5,6 @@ import "./story.css";
 
 import React,{ createRef } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import _ from "lodash";
 
 import CascadeForms,{ CascadeFormProps,FormActions,FormState,FormItem,OnChangeFn } from "./CascadeForms";
 import FORM from "./form1.json";
@@ -30,10 +29,7 @@ const onRender = (formState:FormState,item:FormItem,onChange:OnChangeFn) => {
 const CascadeFormsTest = (props:CascadeFormProps) => {
 	const st = createRef<FormActions>();
 	const [formState,setFormState] = React.useState<FormState>({
-		color:{ value:false },
-		gender:{ value:true },
-		male:{ value:true },
-		accept:{ value:true }
+		...props.formState
 	});
 
 	const onUpdate = (state:any) => {
@@ -59,6 +55,11 @@ export default {
 	title: "Demo",
 	component:CascadeFormsTest,
 	argTypes:{
+		formState:{
+			details:{
+				value:true
+			}
+		},
 		form:{
 			table:{
 				disable:true

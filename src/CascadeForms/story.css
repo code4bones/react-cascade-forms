@@ -12,3 +12,7 @@ body {
     display: flex;
     flex-direction: row;
 }
+
+.formView {
+    width: 50%;
+}

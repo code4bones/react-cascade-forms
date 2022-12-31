@@ -1,13 +1,13 @@
 {
   "name": "@code4bones/react-cascade-forms",
-  "version": "1.0.2",
+  "version": "1.0",
   "main": "build/index.js",
   "module": "build/index.esm.js",
   "files": [
     "build"
   ],
   "types": "build/index.d.ts",
-  "description": "Tree Menu with Property Grid",
+  "description": "React state-driven controls renderer",
   "scripts": {
     "build": "rollup -c",
     "storybook": "start-storybook -p 6006",
@@ -22,11 +22,9 @@
     "url": "git+https://github.com/code4bones/react-cascade-forms.git"
   },
   "keywords": [
-    "Tree",
-    "Menu",
-    "TreeMenu",
-    "Sidebar Navigation",
-    "Property Grid",
+    "Forms",
+    "State",
+    "Controls",
     "React",
     "Typescript",
     "Less",

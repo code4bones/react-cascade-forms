@@ -1,0 +1,10 @@
+
+.sampleForm {
+    margin: 10px;
+    background-color: rgb(241, 149, 11);
+}
+
+.rowForm {
+    display: flex;
+    flex-direction: row;
+}

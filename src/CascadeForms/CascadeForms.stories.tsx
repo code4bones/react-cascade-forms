@@ -1,8 +1,9 @@
 // Generated with util/create-component.js
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
+import "./story.css";
 
-import React,{ useEffect,createRef } from "react";
+import React,{ createRef } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import _ from "lodash";
 
@@ -68,13 +69,11 @@ export default {
 
 const Template : ComponentStory<typeof CascadeForms> = (args:CascadeFormProps) => <CascadeFormsTest {...args} />; 
 
-export const FolderTree = Template.bind({});
+export const CascadeFormSample = Template.bind({});
 
-FolderTree.args = {
+CascadeFormSample.args = {
 	form:FORM,
 };
-
-export const PropertyGridCommon = Template.bind({});
 
 
 /*

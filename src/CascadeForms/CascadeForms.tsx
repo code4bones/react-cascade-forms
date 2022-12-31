@@ -55,7 +55,7 @@ const Render = ({ parent, items,formState,onUpdate,onRender } : RenderProps) => 
 		<div className={parent?.className}>
 			{items.filter(entry => isVisible(entry,formState)).map((entry:FormItem,idx:number) => {
 				return ( 
-					<div className="innerRender" key={`render_${idx}_${entry.id}`}>
+					<div className={entry.className} key={`render_${idx}_${entry.id}`}>
 						<Entry key={`entry_${idx}_${entry.id}`} onRender={onRender} item={entry} formState={formState} onUpdate={onUpdate} />
 						{entry.items?.length && <Render parent={entry} formState={formState} items={entry.items} onRender={onRender} onUpdate={onUpdate} />}
 					</div>

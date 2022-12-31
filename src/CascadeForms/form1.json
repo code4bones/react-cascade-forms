@@ -1,58 +1,58 @@
 [
 	{
 		"type":"view",
-		"className":"formView",
-		"title":"The Form 2",
-		"id":"form2",
+		"title":"Sample view",
+		"id":"sample1",
+		"visible":{ "state":"htitle","expect":true },
 		"items":[
 			{
-				"id":"not",
+				"className":"sampleForm",
+				"id":"header1",
 				"type":"text",
-				"title":"The Title",
-				"visible":{ "state":"female","expect":true }
+				"title":"Surpise !",
+				"visible":{ "state":"agree","expect":true }
 			}
 		]
 	},
 	{
 		"type":"view",
 		"className":"formView",
-		"title":"The Form",
-		"id":"form1",
+		"title":"Common Form",
+		"id":"main",
 		"items":[
 			{
 				"id":"name",
 				"title":"Name",
 				"type":"input",
-				"validator":{ "type":"string","max":5 },
-				"visible":{ "state":"male","expect":true }
+				"validator":{ "type":"string","max":5 }
 			},
 			{
-				"title":"Select people",
+				"title":"More details",
 				"type":"checkbox",
-				"id":"color",
+				"id":"details",
 				"items":[
 					{
-						"visible":{ "state":"color","expect":true },
-						"title":"White people",
+						"title":"Only first name",
 						"type":"input",
-						"id":"white",
+						"id":"first_name",
+						"visible":{ "state":"details","expect":false },
 						"items":[
 							{
-								"title":"Gender",
+								"title":"More opts...",
 								"type":"checkbox",
-								"id":"gender",
+								"id":"opts",
 								"items":[
 									{
-										"title":"Select one",
+										"title":"Hide title",
 										"type":"radio",
-										"id":"male",
-										"visible":{ "state":"gender","expect":true }
+										"id":"htitle",
+										"visible":{ "state":"opts","expect":true }
 									},
 									{
-										"title":"Select Two",
+										"title":"Hide Agreement",
 										"type":"radio",
-										"id":"female",
-										"visible":{ "state":"gender","expect":true }
+										"id":"hagree",
+										"visible":{ "state":"opts","expect":true }
 									}
 								]
 							}
@@ -61,18 +61,18 @@
 					{
 						"type":"view",
 						"id":"pform",
-						"visible":{ "state":"color","expect":false },
-						"className":"peopleForm",
+						"visible":{ "state":"details","expect":true },
+						"className":"rowForm",
 						"items":[
 							{
-								"title":"Black people name include",
+								"title":"First name",
 								"type":"input",
-								"id":"black"
+								"id":"first_name1"
 							},
 							{
-								"title":"Black people exclude",
+								"title":"Last name",
 								"type":"input",
-								"id":"info"
+								"id":"last_name1"
 							}
 						]
 					}
@@ -82,6 +82,7 @@
 				"title":"Agreenment",
 				"type":"checkbox",
 				"id":"agree",
+				"visible":{ "state":"hagree","expect":true },
 				"items":[
 					{
 						"title":"I'll accept all",

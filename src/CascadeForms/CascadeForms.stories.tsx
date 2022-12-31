@@ -6,10 +6,24 @@ import "./story.css";
 import React,{ createRef } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import CascadeForms,{ CascadeFormProps,FormActions,FormState,FormItem,OnChangeFn } from "./CascadeForms";
+import CascadeForms,{ ControlRenderProps,CascadeFormProps,FormActions,FormState,FormItem,OnChangeFn } from "./CascadeForms";
 import FORM from "./form1.json";
 
-import { Button,Checkbox, InputGroup, RadioGroup, Switch } from "@blueprintjs/core";
+import { Button,Callout,Checkbox, EditableText, InputGroup, RadioGroup, Switch } from "@blueprintjs/core";
+
+
+const CustomCtrl = (props:ControlRenderProps) => {
+	const { item,formState, onChange } = props;
+	console.log("Custom !");
+	return (
+		<div className="customCtrl">
+			<Callout intent="warning">
+				Enter some chars..
+			</Callout>
+			<EditableText value={formState[item.id]?.value} multiline={true} minLines={5} onChange={(text) => onChange(item.id,text || "") } />
+		</div>
+	);
+};
 
 const onRender = (formState:FormState,item:FormItem,onChange:OnChangeFn) => {
 	console.log("onRender",formState);
@@ -20,6 +34,8 @@ const onRender = (formState:FormState,item:FormItem,onChange:OnChangeFn) => {
 		return <Checkbox value={formState[item.id]?.value || false} label={item.title} onChange={(ev) => onChange(item.id,ev.target.checked)} />;
 	case "radio":
 		return <Switch checked={formState[item.id]?.value || false} label={item.title} onChange={(ev) => onChange(item.id,ev.target.checked)} />;
+	case "custom":
+		return <CustomCtrl formState={formState} item={item} onChange={onChange} />;
 	default:
 		return <div className="default">{item.title}</div>;
 	}

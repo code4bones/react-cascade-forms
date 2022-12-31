@@ -16,3 +16,7 @@ body {
 .formView {
     width: 50%;
 }
+
+.customCtrl {
+    color: black;
+}

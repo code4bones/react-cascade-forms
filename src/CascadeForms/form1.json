@@ -11,6 +11,11 @@
 				"type":"text",
 				"title":"Surpise !",
 				"visible":{ "state":"agree","expect":true }
+			},
+			{
+				"id":"custom",
+				"type":"custom",
+				"title":"Custom"
 			}
 		]
 	},

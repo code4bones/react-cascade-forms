@@ -31,6 +31,12 @@ export type OnChangeFn = (id:string,value:string) => void;
 export type FormControlRenderFn = (formState:FormState,item:FormItem,onChange:OnChangeFn) => JSX.Element;
 export type StateUpdateFn = (state:FormState) => void;
 
+export type ControlRenderProps = {
+    formState:FormState;
+    item:FormItem;
+    onChange:OnChangeFn;
+} 
+
 
 export type EntryProps = {
     item:FormItem;

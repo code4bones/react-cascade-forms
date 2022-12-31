@@ -41,6 +41,7 @@
 						"type":"input",
 						"id":"first_name",
 						"visible":{ "state":"details","expect":false },
+
 						"items":[
 							{
 								"title":"More opts...",

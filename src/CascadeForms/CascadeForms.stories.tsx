@@ -70,11 +70,6 @@ export default {
 	title: "Demo",
 	component:CascadeFormsTest,
 	argTypes:{
-		formState:{
-			details:{
-				value:true
-			}
-		},
 		form:{
 			table:{
 				disable:true
@@ -90,6 +85,11 @@ export const CascadeFormSample = Template.bind({});
 
 CascadeFormSample.args = {
 	form:FORM,
+	formState:{
+		details:{
+			value:false
+		}
+	},
 };
 
 

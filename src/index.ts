@@ -1,9 +1,12 @@
-import CascadeForms,{ FormActions,FormItems,FormState } from "./CascadeForms/CascadeForms";
+import CascadeForms,{ OnChangeFn,ControlRenderProps,FormActions,FormItem,FormItems,FormState } from "./CascadeForms/CascadeForms";
 
 export {
-	CascadeForms,
+	OnChangeFn,
+	ControlRenderProps,
+	FormItem,
+	FormState,
 	FormActions,
 	FormItems,
-	FormState
 };
 
+export default CascadeForms;

@@ -1,6 +1,7 @@
 // Generated with util/create-component.js
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
+import "@blueprintjs/select/lib/css/blueprint-select.css";
 import "./story.css";
 
 import React,{ createRef } from "react";
@@ -24,17 +25,30 @@ const CustomCtrl = (props:ControlRenderProps) => {
 	);
 };
 
+const PayloadTest = (props:ControlRenderProps) => {
+	const { item,formState, onChange } = props;
+	const { payload } = item;
+	return (
+		<select value={formState[item.id]?.value || 1} onChange={(ev) => onChange(item.id,ev.target.value)}>
+			{payload.map(({ value,label })=>{
+				return <option key={label} value={value}>{label}</option>;
+			})}
+		</select>
+	);
+};
+
 const onRender = (formState:FormState,item:FormItem,onChange:OnChangeFn) => {
-	console.log("onRender",formState);
 	switch ( item.type ) {
 	case "input":
 		return <InputGroup intent={formState[item.id]?.state ? "danger" : "primary"} value={formState[item.id]?.value || ""} placeholder={item.title} onChange={(ev) => onChange(item.id,ev.target.value)} />;
 	case "checkbox":
-		return <Checkbox value={formState[item.id]?.value || false} label={item.title} onChange={(ev) => onChange(item.id,ev.target.checked)} />;
+		return <Checkbox value={formState[item.id]?.value} label={item.title} onChange={(ev) => onChange(item.id,ev.target.checked)} />;
 	case "radio":
-		return <Switch checked={formState[item.id]?.value || false} label={item.title} onChange={(ev) => onChange(item.id,ev.target.checked)} />;
+		return <Switch checked={formState[item.id]?.value} label={item.title} onChange={(ev) => onChange(item.id,ev.target.checked)} />;
 	case "custom":
 		return <CustomCtrl formState={formState} item={item} onChange={onChange} />;
+	case "select":
+		return <PayloadTest formState={formState} item={item} onChange={onChange} />;
 	default:
 		return <div className="default">{item.title}</div>;
 	}

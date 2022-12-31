@@ -38,7 +38,7 @@ export type ControlRenderProps = {
 } 
 
 
-export type EntryProps = {
+export type ControlItemProps = {
     item:FormItem;
     formState:FormState;
     onRender:FormControlRenderFn;
@@ -47,12 +47,12 @@ export type EntryProps = {
 
 export type CascadeFormProps = {
     form:FormItems;
-} & Omit<EntryProps,"item">
+} & Omit<ControlItemProps,"item">
 
 export type RenderProps = {
     items:FormItems;
     parent?:FormItem;
-} & Omit<EntryProps,"item">
+} & Omit<ControlItemProps,"item">
 
 export type FormActions = {
     getState:() => FormState;

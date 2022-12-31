@@ -32,6 +32,34 @@
 				"validator":{ "type":"string","min":2,"max":5 }
 			},
 			{
+				"id":"select",
+				"title":"Payload test",
+				"type":"select",
+				"payload":[
+					{"value":1,"label":"The One"},
+					{"value":2,"label":"Two.."},
+					{"value":3,"label":"Ten !"}
+				]
+			},
+			{
+				"id":"select1",
+				"className":"select-1",
+				"title":"Selected one",
+				"visible":{ "state":"select","expect":"1" }
+			},
+			{
+				"id":"select2",
+				"className":"select-2",
+				"title":"Selected Two",
+				"visible":{ "state":"select","expect":"2" }
+			},
+			{
+				"id":"select3",
+				"className":"select-3",
+				"title":"Selected TEN !",
+				"visible":{ "state":"select","expect":"3" }
+			},
+			{
 				"title":"More details",
 				"type":"checkbox",
 				"id":"details",
@@ -41,7 +69,6 @@
 						"type":"input",
 						"id":"first_name",
 						"visible":{ "state":"details","expect":false },
-
 						"items":[
 							{
 								"title":"More opts...",

@@ -1,6 +1,6 @@
 import React,{ useEffect,useImperativeHandle,useState } from "react";
 import Validator,{ ValidationError } from "fastest-validator";
-import { FormActions,FormItem,FormState,EntryProps, RenderProps,CascadeFormProps } from "./CascadeForms.types";
+import { FormActions,FormItem,FormState,ControlItemProps, RenderProps,CascadeFormProps } from "./CascadeForms.types";
 
 export * from "./CascadeForms.types";
 
@@ -14,7 +14,7 @@ const isVisible = (item:FormItem,formState:FormState) => {
 };
 
 
-const Entry : React.FC<EntryProps> = ({ item,formState,onUpdate,onRender }) => {
+const ControlItem : React.FC<ControlItemProps> = ({ item,formState,onUpdate,onRender }) => {
 	const [state,setState] = useState(formState);
 
 	const onChange = (id:string,value:string) => {
@@ -54,7 +54,7 @@ const Render = ({ parent, items,formState,onUpdate,onRender } : RenderProps) => 
 			{items.filter(entry => isVisible(entry,formState)).map((entry:FormItem,idx:number) => {
 				return ( 
 					<div className={entry.className} key={`render_${idx}_${entry.id}`}>
-						<Entry key={`entry_${idx}_${entry.id}`} onRender={onRender} item={entry} formState={formState} onUpdate={onUpdate} />
+						<ControlItem key={`entry_${idx}_${entry.id}`} onRender={onRender} item={entry} formState={formState} onUpdate={onUpdate} />
 						{entry.items?.length && <Render parent={entry} formState={formState} items={entry.items} onRender={onRender} onUpdate={onUpdate} />}
 					</div>
 				);

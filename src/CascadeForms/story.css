@@ -1,4 +1,8 @@
 
+body {
+    color: white;
+}
+
 .sampleForm {
     margin: 10px;
     background-color: rgb(241, 149, 11);

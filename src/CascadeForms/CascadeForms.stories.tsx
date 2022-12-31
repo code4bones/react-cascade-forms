@@ -14,7 +14,6 @@ import { Button,Callout,Checkbox, EditableText, InputGroup, RadioGroup, Switch }
 
 const CustomCtrl = (props:ControlRenderProps) => {
 	const { item,formState, onChange } = props;
-	console.log("Custom !");
 	return (
 		<div className="customCtrl">
 			<Callout intent="warning">

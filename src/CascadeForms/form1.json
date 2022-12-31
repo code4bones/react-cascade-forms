@@ -48,13 +48,13 @@
 								"id":"opts",
 								"items":[
 									{
-										"title":"Hide title",
+										"title":"More constols",
 										"type":"radio",
 										"id":"htitle",
 										"visible":{ "state":"opts","expect":true }
 									},
 									{
-										"title":"Hide Agreement",
+										"title":"Show Agreement",
 										"type":"radio",
 										"id":"hagree",
 										"visible":{ "state":"opts","expect":true }

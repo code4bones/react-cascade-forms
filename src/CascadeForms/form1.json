@@ -1,136 +1,120 @@
 [
 	{
+		"type":"checkbox",
+		"title":"Фейковый стейт, -  сотрудник",
+		"id":"is_employee"
+	},
+	{
 		"type":"view",
-		"title":"Sample view",
-		"id":"sample1",
-		"visible":{ "state":"htitle","expect":true },
+		"title":"Первым обязательным шагом является заполнение поля актуального телефона",
+		"id":"phone_header",
 		"items":[
 			{
-				"className":"sampleForm",
-				"id":"header1",
-				"type":"text",
-				"title":"Surpise !",
-				"visible":{ "state":"agree","expect":true }
-			},
-			{
-				"id":"custom",
-				"type":"custom",
-				"title":"Custom"
+				"className":"phone-entry",
+				"id":"phone",
+				"type":"phone-type",
+				"title":"Введите Ваш номер"
 			}
 		]
 	},
 	{
+		"type":"query-select",
+		"title":"Следующий шаг выбор типа",
+		"id":"type-selector",
+		"payload":{
+			"query":"mock_types"
+		}
+	},
+	{
 		"type":"view",
-		"className":"formView",
-		"title":"Common Form",
-		"id":"main",
-		"items":[
-			{
-				"id":"name",
-				"title":"Name",
-				"type":"input",
-				"validator":{ "type":"string","min":2,"max":5 }
-			},
-			{
-				"id":"select",
-				"title":"Payload test",
-				"type":"select",
-				"payload":[
-					{"value":1,"label":"The One"},
-					{"value":2,"label":"Two.."},
-					{"value":3,"label":"Ten !"}
-				]
-			},
-			{
-				"id":"select1",
-				"className":"select-1",
-				"title":"Selected one",
-				"visible":{ "state":"select","expect":"1" }
-			},
-			{
-				"id":"select2",
-				"className":"select-2",
-				"title":"Selected Two",
-				"visible":{ "state":"select","expect":"2" }
-			},
-			{
-				"id":"select3",
-				"className":"select-3",
-				"title":"Selected TEN !",
-				"visible":{ "state":"select","expect":"3" }
-			},
-			{
-				"title":"More details",
-				"type":"checkbox",
-				"id":"details",
-				"items":[
-					{
-						"title":"Only first name",
+		"title":"Командировка сотрудника",
+		"id":"type1-form",
+		"visible":{"state":"type-selector","expect":"type1"},
+		"items":[{
+				"type":"view",
+				"title":"О направлении сотрудника в командировку",
+				"id":"worktravel",
+				"items":[{
 						"type":"input",
-						"id":"first_name",
-						"visible":{ "state":"details","expect":false },
-						"items":[
-							{
-								"title":"More opts...",
-								"type":"checkbox",
-								"id":"opts",
-								"items":[
-									{
-										"title":"More constols",
-										"type":"radio",
-										"id":"htitle",
-										"visible":{ "state":"opts","expect":true }
-									},
-									{
-										"title":"Show Agreement",
-										"type":"radio",
-										"id":"hagree",
-										"visible":{ "state":"opts","expect":true }
-									}
-								]
-							}
-						]
-					},
-					{
-						"type":"view",
-						"id":"pform",
-						"visible":{ "state":"details","expect":true },
-						"className":"rowForm",
-						"items":[
-							{
-								"title":"First name",
+						"title":"ФИО",
+						"id":"fio"
+						},
+						{
+							"type":"view",
+							"title":"Даты командировки",
+							"id":"two-dates",
+							"className":"row-divs",
+							"items":[{
 								"type":"input",
-								"id":"first_name1"
+								"id":"startDate"
 							},
 							{
-								"title":"Last name",
 								"type":"input",
-								"id":"last_name1"
-							}
-						]
-					}
-				]
-			},
+								"id":"endDate"
+							}]
+						},
+						{
+							"type":"view",
+							"className":"cb-rows-1",
+							"items":[{
+									"type":"checkbox",
+									"id":"travel",
+									"title":"проезд"
+								},{
+									"type":"checkbox",
+									"id":"homes",
+									"title":"проживание"
+								},
+								{
+									"type":"checkbox",
+									"title":"Это есле я сотрудиник",
+									"id":"employee",
+									"visible":{"state":"is_employee","expect":true}
+								},
+								{
+									"type":"checkbox",
+									"title":"И еше - препод ( то два чек бокса )",
+									"id":"teacher",
+									"visible":{"state":"employee","expect":true},
+									"items":[{
+										"type":"view",
+										"title":"Some",
+										"id":"some_view",
+										"visible":{"state":"teacher","expect":true},	
+										"items":[{
+											"id":"graph_shift_1",
+											"title":"График переноса занятий прилагается",
+											"type":"checkbox",											
+											"items":[{
+													"id":"upload_ref",
+													"visible":{"state":"graph_shift_1","expect":true},	
+													"title":"должна появиться возможность подкрепить файл",
+													"type":"input"
+													}]
+											},
+											{
+											"type":"view",
+											"items":[{
+												"id":"graph_shift_2",
+												"title":"занятия в данный период не осуществляются",
+												"type":"checkbox"												
+											}]										
+										}]
+									}]
+							}]
+						}]
+		}]
+		},
+	{
+		"type":"view",
+		"title":"Поездка обучающихся",
+		"id":"type2-form",
+		"visible":{"state":"type-selector","expect":"type2"},
+		"items":[
 			{
-				"title":"Agreenment",
-				"type":"checkbox",
-				"id":"agree",
-				"visible":{ "state":"hagree","expect":true },
-				"items":[
-					{
-						"title":"I'll accept all",
-						"type":"text",
-						"id":"accept",
-						"visible":{ "state":"agree","expect":true }						
-					},
-					{
-						"title":"Will u sell ur liver ?",
-						"type":"text",
-						"id":"deny",
-						"visible":{ "state":"agree","expect":false }
-					}
-				]
-			}			
-		]		
+				"type":"view",
+				"title":"Поездка обучающихся"
+			}
+		]
 	}
 ]

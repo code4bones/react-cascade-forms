@@ -37,8 +37,45 @@ const PayloadTest = (props:ControlRenderProps) => {
 	);
 };
 
+const MOCK_TYPES = [{
+	value:"type1",
+	label:"О направлении сотрудника в командировку"
+},
+{
+	value:"type2",
+	label:"О направлении в поездку обучающихся"
+}];
+
+const useFakeQuery = (query) => {
+	switch ( query ) {
+	case "mock_types":
+		return MOCK_TYPES;
+	default:
+		return new Array(10).map((v,idx) => ({ value:idx,label:`value_${idx}` }));
+	}
+};
+
+const QuerySelect = (props:ControlRenderProps) => {
+	const { item,formState,onChange } = props;
+	const { payload:{ query } } = item;
+	const data = useFakeQuery(query);
+
+	return (
+		<select value={formState[item.id]?.value || 1} onChange={(ev) => onChange(item.id,ev.target.value)}>
+			{data.map(({ value,label })=>{
+				return <option key={value} value={value}>{label}</option>;
+			})}
+		</select>
+	);
+
+};
+
 const onRender = (formState:FormState,item:FormItem,onChange:OnChangeFn) => {
 	switch ( item.type ) {
+	case "phone-type":
+		return <InputGroup intent={formState[item.id]?.state ? "danger" : "primary"} value={formState[item.id]?.value || ""} placeholder={item.title} onChange={(ev) => onChange(item.id,ev.target.value)} />;
+	case "query-select":
+		return <QuerySelect formState={formState} item={item} onChange={onChange} />;
 	case "input":
 		return <InputGroup intent={formState[item.id]?.state ? "danger" : "primary"} value={formState[item.id]?.value || ""} placeholder={item.title} onChange={(ev) => onChange(item.id,ev.target.value)} />;
 	case "checkbox":

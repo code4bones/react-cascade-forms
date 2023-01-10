@@ -39,7 +39,6 @@ body {
 .row-divs {
     display: flex;
     flex-direction: row;
-    border: 1px solid red;
 }
 
 .cb-rows-1 {

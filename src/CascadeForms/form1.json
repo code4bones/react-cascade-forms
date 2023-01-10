@@ -67,15 +67,9 @@
 								},
 								{
 									"type":"checkbox",
-									"title":"Это есле я сотрудиник",
-									"id":"employee",
-									"visible":{"state":"is_employee","expect":true}
-								},
-								{
-									"type":"checkbox",
 									"title":"И еше - препод ( то два чек бокса )",
 									"id":"teacher",
-									"visible":{"state":"employee","expect":true},
+									"visible":{"state":"is_employee","expect":true},
 									"items":[{
 										"type":"view",
 										"title":"Some",
